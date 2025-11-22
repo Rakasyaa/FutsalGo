@@ -13,6 +13,26 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Tabel futsal_fields
+CREATE TABLE futsal_fields (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    field_name VARCHAR(100) NOT NULL,
+    open_time TIME NOT NULL,
+    close_time TIME NOT NULL,
+    price_per_session DECIMAL(10,2) NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+
+-- Insert sample data
+INSERT INTO futsal_fields (field_name, open_time, close_time, price_per_session) VALUES
+('Lapangan A', '08:00:00', '22:00:00', 150000.00),
+('Lapangan B', '09:00:00', '23:00:00', 120000.00),
+('Lapangan VIP', '10:00:00', '24:00:00', 250000.00);
+
 -- Insert admin default
 INSERT INTO users (username, password, email, user_level)
 VALUES ('admin', SHA2('admin123', 256), 'admin@futsal.com', 'admin');
